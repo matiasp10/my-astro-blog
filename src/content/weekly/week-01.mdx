@@ -248,3 +248,167 @@ checkSizeOfStack([3, 2, 6, 4, 8], stackSize);
 }`}
   client:load
 />
+
+# Crear numero telefonico
+
+Escribe una funcion que acepte un array de 10 enteros (entre 0 y 9), que devuelva un string de esos numeros en formato de numero telefonico.
+
+## Ejemplo
+
+```js
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]); // => returns "(123) 456-7890"
+```
+
+El formato debe ser el correcto para resolver el desafio.
+
+No te olvides del espacio despues del cierre de parentesis!
+
+## Link al problema
+
+[Link](https://www.codewars.com/kata/525f50e3b73515a6db000b83/train/javascript)
+
+## Mi solucion
+
+```js
+function createPhoneNumber(numbers) {
+  const caracteristica = numbers.splice(0, 3).join('');
+  const firstNumbers = numbers.splice(0, 3).join('');
+  const secondNumbers = numbers.splice(0, 4).join('');
+  return `(${caracteristica}) ${firstNumbers}-${secondNumbers}`;
+}
+```
+
+# Concatenacion de un array
+
+Dado un array de enteros `nums` de longitud n, necesitas crear un array de longitud 2n donds `ans[i] == nums[i]` y `ans[i + n] === nums[i]` para `0 <= i < n` (0-indexed).
+
+Especificamente, `ans` es la concatenacion de dos arrays `nums`.
+
+Devolver el array `ans`.
+
+## Ejemplo 1
+
+```
+Input: nums = [1,2,1]
+Output: [1,2,1,1,2,1]
+Explanation: The array ans is formed as follows:
+- ans = [nums[0],nums[1],nums[2],nums[0],nums[1],nums[2]]
+- ans = [1,2,1,1,2,1]
+```
+
+## Ejemplo 2
+
+```
+Input: nums = [1,3,2,1]
+Output: [1,3,2,1,1,3,2,1]
+Explanation: The array ans is formed as follows:
+- ans = [nums[0],nums[1],nums[2],nums[3],nums[0],nums[1],nums[2],nums[3]]
+- ans = [1,3,2,1,1,3,2,1]
+```
+
+## Limitantes
+
+<List items={['n == nums.length', '1 <= n <= 1000', '1 <= nums[i] <= 1000']} />
+
+## Link al problema
+
+[Link](https://leetcode.com/problems/concatenation-of-array/description/)
+
+## Mi solucion
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var getConcatenation = function (nums) {
+  return [...nums, ...nums];
+};
+```
+
+# Compra de vehiculo
+
+En este desafio tendras que escribir codigo para comprar un vehiculo.
+
+Tienes 3 tareas, una determina si vas a necesitar una licencia, otra te ayudara a elegir entre dos vehiculos y una tercera estimara el precio aceptable para un vehiculo usado.
+
+## Tarea 1: Determina si necesitaras una licencia de conducir
+
+Algunos vehiculos necesitan de una licencia de conducir para operarlos. Asumiendo que solo los vehiculos "car" y "truck" requieren de la licencia, los demas pueden conducirse sin la licencia.
+
+Implementa la funcion `needsLicense(kind)` que toma el tipo (kind) de vehiculo y devuelve un booleano indicando si necesitas o no la licencia para ese tipo de vehiculo.
+
+```js
+needsLicense('car');
+// => true
+
+needsLicense('bike');
+// => false
+```
+
+### Mi solucion
+
+```js
+function needsLicense(kind) {
+  if (kind === 'car' || kind === 'truck') {
+    return true;
+  } else {
+    return false;
+  }
+}
+```
+
+## Tarea 2: Elige entre dos vehiculos potenciales para comprar
+
+Evaluarias tus opciones de vehiculos disponibles. Haz llego a decidirte entre dos opciones pero necesitaras ayuda para hacer la decision final. Para esto implementaras la funcion `chooseVehicle(option1, option2)` que toma los dos vehiculos como argumentos y devuelve una decision que incluye la opcion que esta primero en el orden alfabetico.
+
+```js
+chooseVehicle('Wuling Hongguang', 'Toyota Corolla');
+// =>  'Toyota Corolla is clearly the better choice.'
+
+chooseVehicle('Volkswagen Beetle', 'Volkswagen Golf');
+// =>  'Volkswagen Beetle is clearly the better choice.'
+```
+
+### Mi solucion
+
+```js
+function chooseVehicle(option1, option2) {
+  if (option1 < option2) {
+    return `${option1} is clearly the better choice.`;
+  } else {
+    return `${option2} is clearly the better choice.`;
+  }
+}
+```
+
+## Tarea 2: Calcular una estimacion para el precio de un vehiculo usado
+
+Ahora que ha tomado una decisión, quiere asegurarse de que le ofrecen un precio justo en el concesionario. Dado que estás interesado en comprar un vehículo usado, el precio depende de la antigüedad del vehículo. Para hacer una estimación aproximada, supongamos que si el vehículo tiene menos de 3 años, cuesta el 80% del precio original que tenía cuando era nuevo. Si tiene más de 10 años, cuesta el 50%. Si el vehículo tiene al menos 3 años pero no más de 10, cuesta el 70% del precio original.
+
+Implementa la función `calculateResellPrice(originalPrice, age)` que aplica esta lógica usando if, else if y else. Toma como argumentos el precio original y la antigüedad del vehículo y devuelve el precio estimado en el concesionario.
+
+```js
+calculateResellPrice(1000, 1);
+// => 800
+
+calculateResellPrice(1000, 5);
+// => 700
+
+calculateResellPrice(1000, 15);
+// => 500
+```
+
+### Mi solucion
+
+```js
+function calculateResellPrice(originalPrice, age) {
+  if (age < 3) {
+    return (80 * originalPrice) / 100;
+  } else if (age <= 10) {
+    return (70 * originalPrice) / 100;
+  } else {
+    return (50 * originalPrice) / 100;
+  }
+}
+```
