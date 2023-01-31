@@ -1,0 +1,25 @@
+---
+import Code from 'astro/components/Code.astro';
+const { code } = Astro.props;
+---
+
+<div class="container">
+  <div class="code-container">
+    <Code code={code} lang="js" theme="monokai" />
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  .code-container {
+    width: 600px;
+    padding: 20px;
+    background-color: #272822;
+    border-radius: 20px;
+  }
+</style>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Inicio">
+  <main>
+    <div class="hero">
+      <h1>Matias Petenatti</h1>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    min-height: 100vh;
+    background-color: #000814;
+    margin: 50px 100px;
+    border-radius: 30px;
+  }
+  .hero {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #e63946;
+  }
+</style>

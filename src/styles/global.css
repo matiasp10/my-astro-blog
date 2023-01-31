@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Math&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+
+  color: #edede9;
+}
+
+body {
+  background-color: #1d3557;
+  font-family: 'Poppins', 'Noto Sans Math', sans-serif;
+}
+
+/* ===== SandpackProvider ============================= */
+/* Overall wrapper */
+div.sp-wrapper {
+  font-size: 18px;
+}
+
+/* ===== SandpackCodeEditor =========================== */
+/* Tab bar */
+div.sp-tabs {
+}
+
+/* Scrollable tab container */
+div.sp-tabs-scrollable-container {
+}
+
+/* Individual tab */
+button.sp-tab-button {
+}
+
+/* Active tab */
+button.sp-tab-button[data-active='true'] {
+}
+
+/* Wrapper for components */
+div.sp-stack {
+}
+
+/* Code editor wrapper */
+div.sp-code-editor {
+  border: 3px solid white;
+}
+
+/* Background for code editor */
+div.cm-editor {
+}
+
+/* Code editor content */
+div.sp-code-editor div.cm-content {
+}
+
+/* Line of code */
+div.sp-code-editor div.cm-line {
+}
+
+/* Active line of code */
+div.sp-code-editor div.cm-line.cm-activeLine {
+}
+
+/* Gutter background */
+div.sp-code-editor div.cm-gutters {
+}
+
+/* Line numbers */
+div.sp-code-editor div.cm-gutter.cm-lineNumbers {
+}
+
+/* ===== SandpackPreview ============================== */
+/* Preview container */
+div.sp-preview-container {
+}
+
+/* Preview iframe */
+iframe.sp-preview-iframe {
+}
+
+/* Wrapper for buttons in preview container */
+div.sp-preview-actions {
+}
+
+/* Wrapper for loading icon in preview container */
+div.sp-loading {
+}
+
+/* Open in Sandbox button, appears while loading */
+button.sp-icon-standalone {
+}
+
+/* Error box */
+div.sp-error {
+}
+
+/* Error text */
+div.sp-error-message {
+  white-space: pre-wrap;
+}

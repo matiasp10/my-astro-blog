@@ -1,0 +1,250 @@
+---
+title: 'Semana 01'
+---
+
+import Title from '../../components/Title';
+import Code from '../../components/CodeSyntax.astro';
+import List from '../../components/List';
+import CodeSandpack from '../../components/CodeSandpack';
+
+<Title title={frontmatter.title} />
+
+# Paréntesis válidos
+
+Dada una cadena **s** que sólo contiene los caracteres `(`, `)`, `{`, `}`, `[` y `]`, determine si la cadena de entrada es válida.
+
+Una cadena de entrada es válida si
+
+<List
+  items={[
+    'Los corchetes abiertos deben estar cerrados por el mismo tipo de corchetes.',
+    'Los corchetes abiertos deben cerrarse en el orden correcto.',
+    'Cada corchete cerrado tiene su correspondiente corchete abierto del mismo tipo.',
+  ]}
+/>
+
+## Ejemplos
+
+### Ejemplo 1:
+
+<Code
+  code={`Input: s = "()"
+Output: true`}
+/>
+
+### Ejemplo 2:
+
+<Code
+  code={`Input: s = "()[]{}"
+Output: true`}
+/>
+
+### Ejemplo 3:
+
+<Code
+  code={`Input: s = "(]"
+Output: false`}
+/>
+
+## Link del problema
+
+[Link](https://leetcode.com/problems/valid-parentheses/)
+
+## Mi solucion
+
+<CodeSandpack
+  client:load
+  code={`/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+  let stack = [];
+  for (let z of s) {
+    if (z === '(' || z === '[' || z === '{') {
+      stack.push(z);
+    } else {
+      let latest = stack[stack.length - 1];
+      console.log(latest);
+      if (
+        (z === ')' && latest === '(') ||
+        (z === ']' && latest === '[') ||
+        (z === '}' && latest === '{')
+      ) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0
+};
+`}
+/>
+
+# Encantos de Elyses
+
+Como futura maga, Elyse necesita practicar algunos trucos básicos. Tiene una pila de cartas que quiere manipular.
+
+Para facilitar las cosas, sólo utiliza las cartas del 1 al 10, de modo que su pila de cartas puede representarse mediante una matriz de números. La posición de una carta determinada corresponde a su índice en la matriz. Esto significa que la posición 0 se refiere a la primera carta, la posición 1 a la segunda carta, etc.
+
+## Tarea 1: Recuperar una tarjeta de una pila
+
+Para elegir una carta, devuelve la carta en la posición índice de la pila dada.
+
+```js
+const position = 2;
+getItem([1, 2, 4, 1], position);
+// => 4
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function getItem(cards, position) {
+  return cards[position]
+}`}
+  client:load
+/>
+
+## Tarea 2: Cambiar una carta de la pila
+
+Realice algún juego de manos e intercambie la carta en la posición del índice con la carta de sustitución suministrada. Devuelve la pila ajustada.
+
+```js
+const position = 2;
+const replacementCard = 6;
+setItem([1, 2, 4, 1], position, replacementCard);
+// => [1, 2, 6, 1]
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function setItem(cards, position, replacementCard) {
+  cards.splice(position, 1, replacementCard)
+  return cards
+}`}
+  client:load
+/>
+
+## Tarea 3: Inserte una carta en la parte superior de la pila
+
+Haga aparecer una carta insertando una nueva carta en la parte superior de la pila. Devuelve la pila ajustada.
+
+```js
+const newCard = 8;
+insertItemAtTop([5, 9, 7, 1], newCard);
+// => [5, 9, 7, 1, 8]
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function insertItemAtTop(cards, newCard) {
+  cards.push(newCard)
+  return cards
+}`}
+  client:load
+/>
+
+## Tarea 4: Retirar una carta de la pila
+
+Hacer desaparecer una carta eliminando la carta en la posición dada de la pila. Devuelve la pila ajustada.
+
+```js
+const position = 2;
+removeItem([3, 2, 6, 4, 8], position);
+// => [3, 2, 4, 8]
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function removeItem(cards, position) {
+  cards.splice(position, 1)
+  return cards
+}`}
+  client:load
+/>
+
+## Tarea 5: Retira la carta superior de la pila
+
+Haga desaparecer una carta retirando la carta de la parte superior de la pila. Devuelve la pila ajustada.
+
+```js
+removeItemFromTop([3, 2, 6, 4, 8]);
+// => [3, 2, 6, 4]
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function removeItemFromTop(cards) {
+  cards.pop()
+  return cards
+}`}
+  client:load
+/>
+
+## Tarea 6: Inserte una carta en la parte inferior de la pila
+
+Haga aparecer una carta insertando una nueva carta en la parte inferior de la pila. Devuelve la pila ajustada.
+
+```js
+const newCard = 8;
+insertItemAtBottom([5, 9, 7, 1], newCard);
+// => [8, 5, 9, 7, 1]
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function insertItemAtBottom(cards, newCard) {
+  cards.unshift(newCard)
+  return cards
+}`}
+  client:load
+/>
+
+## Tarea 7: Retirar una carta del fondo de la pila
+
+Haga desaparecer una carta retirando la carta de la parte inferior de la pila. Devuelve la pila ajustada.
+
+```js
+removeItemAtBottom([8, 5, 9, 7, 1]);
+// => [5, 9, 7, 1]
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function removeItemAtBottom(cards) {
+  cards.shift()
+  return cards
+}`}
+  client:load
+/>
+
+## Tarea 8: Comprobar el tamaño de la pila
+
+Comprueba si el tamaño de la pila es igual o no a stackSize.
+
+```js
+const stackSize = 4;
+checkSizeOfStack([3, 2, 6, 4, 8], stackSize);
+// => false
+```
+
+### Mi solucion
+
+<CodeSandpack
+  code={`function checkSizeOfStack(cards, stackSize) {
+  if(cards.length === stackSize){
+    return true
+  } else {
+    return false
+  }
+}`}
+  client:load
+/>

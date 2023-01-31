@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const allPost = await getCollection('weekly');
+---
+
+<BaseLayout>
+  {
+    allPost.map((post) => {
+      console.log(post.slug);
+      return (
+        <li>
+          <a href={`/weekly/${post.slug}`}>{post.data.title}</a>
+        </li>
+      );
+    })
+  }
+</BaseLayout>
+
+<style></style>
