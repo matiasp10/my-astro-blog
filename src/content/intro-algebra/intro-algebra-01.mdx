@@ -1,0 +1,156 @@
+---
+title: Introduccion al algebra.
+subtitle: Conjuntos. Subconjuntos. Diagramas de Venn. Operaciones entre conjuntos. Propiedades de las operaciones de conjuntos. Tabla de verdad de las operaciones de conjuntos. Partición. Producto cartesiano.
+---
+
+import Title from '../../components/Title';
+import Subtitle from '../../components/Subtitle';
+import List from '../../components/List';
+
+<Title title={frontmatter.title} />
+<Subtitle content={frontmatter.subtitle} />
+
+# Conjuntos
+
+Un conjunto es una coleccion de objetos, llamados elementos, que tiene la propiedad que dado un objeto cualquiera, se puede decidir si ese objeto es un elemento del conjunto o no.
+
+Ejemplos:
+
+<List
+  items={[
+    'A = {1, 2, 3}, B = {△, ◻}, C = {1, {1}, {2, 3}}',
+    'ℕ = {1, 2, 3, 4, . . . } el conjunto de los numeros naturales.',
+    'ℤ = {. . . , −2, −1, 0, 1, 2, . . . } el conjunto de los numeros enteros.',
+    'ℚ = {a/b; a ∈ ℤ, b ∈ ℕ} el conjunto de los numeros racionales.',
+    'ℝ el conjunto de los numeros reales, ℂ el conjunto de los numeros complejos.',
+    '∅ o { } el conjunto vacio',
+  ]}
+/>
+
+Observacion
+El orden de los elementos no importa en un conjunto, y en un conjunto no se tiene en cuenta repeticiones de elementos.
+
+Se dice que cada elemento a de un conjunto A pertenece al conjunto A, y se nota a ∈ A. Si un objeto b no pertenece al conjunto A, se nota b ∉ A.
+
+Ejemplos:
+
+<List
+  items={[
+    'Sea A = {1, 2, 3}: 1 ∈ A, 2 ∈ A, 4 ∉ A, {1, 2} ∉ A, ∅ ∉ A.',
+    'Sea B = {2, {1}, {2, 3}}: {1} ∈ B, {2, 3} ∈ B, 1 ∉ B, 3 ∉ B',
+  ]}
+/>
+
+Para notar los conjuntos se suele reservar letras mayusculas: A, B, ... , X, Y , ... , U, V , ...
+
+Definicion: (Cardinal de un conjunto.) Sea A un conjunto, se llama cardinal de A a la cantidad de elementos distintos que tiene A, y se nota #A. Cuando el conjunto no tiene un n´umero finito de elementos, se dice que es infinito, y se nota #A = ∞.
+
+Ejemplos:
+
+`#∅ = 0, #{a, b, c} = 3 = #{1, 2, 3}, #ℕ = ∞.`
+
+Notar que si A es un conjunto finito, `#A ∈ N ∪ {0} =: N0`.
+
+Las definiciones comunes de un conjunto son por extension (listando todos los elementos del conjunto entre las llaves `{` y `}`, cuando es posible hacerlo, o sea cuando el conjunto es finito) y por comprension (a traves de una propiedad que describe los elementos del conjunto, pero usualmente para eso se necesita la nocion de subconjunto porque hay que dar un conjunto referencial, de donde se eligen los elementos). Tambien presentamos en forma informal los conjuntos infinitos ℕ y ℤ usando los puntos suspensivos ... , aunque esto no es muy riguroso: se puede dar una definicion formal del conjunto ℕ sin usar ... , y a partir de ello definir ℤ y ℚ. El conjunto ℝ se supone “conocido”, aunque para el tambien se puede dar una construccion rigurosa, y a traves de ℝ se puede definir ℂ facilmente.
+
+Los conjuntos se suelen representar graficamente por los llamados diagramas de Venn (por el logico y filosofo britanico John Archibald Venn, 1834–1923), que son simplemente de la forma:
+
+<img
+  src="https://support.content.office.net/es-es/media/97a3d11c-7c48-4912-a11a-815c8cd220b5.png"
+  alt="diagrama de venn"
+/>
+
+Definicion 1.1.4. (Subconjuntos e Inclusion.) Sea A un conjunto. Se dice que un conjunto
+B esta contenido en A, y se nota B ⊆ A (o tambien B ⊂ A), si todo elemento de B es un elemento
+de A. En ese caso decimos tambien que b esta incluido en A, o que B es un subconjunto de A.
+Si B no es un subconjunto de A se nota B ̸⊆ A (o B ̸⊂ A).
+
+Ejemplos:
+
+<List
+  items={[
+    'Sea A = {1, 2, 3}: {1} ⊆ A, {2, 3} ⊆ A, ∅ ⊆ A, A ⊆ A, {3, 4} ̸⊆ A.',
+    'ℕ ⊆ ℕ ⊆ ℚ ⊆ ℝ ⊆ ℂ.',
+    'A ⊆ A y ∅ ⊆ A cualquiera sea el conjunto A.',
+  ]}
+/>
+
+O sea, B esta incluido en A si para todo b, se tiene que si b pertenece a B entonces b pertenece a A, y B no esta incluido en A si existe b perteneciendo a B tal que b no pertenece a A.
+
+Matematicamente se escribe:
+
+B ⊆ A si ∀ b, b ∈ B ⇒ b ∈ A , B ̸⊆ A si ∃ b ∈ B : b ̸∈ A.
+
+Aqui el simbolo “∀” significa “para todo”: la construccion “∀ b, . . . ”se lee “para todo b, se tiene
+... ”, y el simbolo “∃” significa “existe”: la construccion “∃ b ∈ B : ... ”se lee “existe b en B
+tal que ... ”. El simbolo “⇒” significa “implica”: la construccion “b ∈ B ⇒ b ∈ A” se lee “b en
+B implica b en A”, o tambien “si b en B, entonces b en A” (significa que si ocurre lo primero,
+entonces obligatoriamente tiene que ocurrir lo segundo).
+
+Ejemplos de conjuntos dados por comprension:
+
+<List
+  items={[
+    'A = {x ∈ R : x ≥ −2}, B = {k ∈ Z : k ≥ −2}.',
+    'P = {n ∈ N : n es par}, I = {k ∈ Z : k es impar}.',
+  ]}
+/>
+
+Representacion de Venn de B ⊆ A:
+
+<img src="https://i.imgur.com/d0exH2s.png" alt="Representacion de Venn" />
+
+Observacion 1.1.5. (Igualdad de conjuntos.)
+
+{/* TODO: representacion matematica */}
+
+A = B ⇐⇒ A ⊆ B y B ⊆ A.
+
+Es decir A = B si tienen exactamente los mismos elementos (sin importar el orden y sin tener en cuenta repeticiones de elementos). (Aqui, el simbolo “⇔” es el simbolo de la bi-implicacion, que se lee “si y s´olo si”.)
+
+Observaci´on 1.1.6. (Combinatoria, o el arte de contar.)
+
+Sea A es un conjunto finito y sea B ⊆ A. Entonces #B ≤ #A. (Esto vale tambien para conjuntos infinitos)
+
+Ejemplo 1.1.7. (Conjunto de partes.)
+
+Sea A un conjunto. El conjunto de partes de A, que se nota P(A), es el conjunto formado por todos los subconjuntos de A, o sea el conjunto cuyos elementos son los subconjuntos de A. Es decir
+
+`P(A) = {B : B ⊆ A} o tambien B ∈ P(A) ⇐⇒ B ⊆ A.`
+
+Ejemplos:
+
+<List
+  items={[
+    'Sea A = {1, 2, 3}: P(A) = {∅, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, A}.',
+    'Cualquiera sea el conjunto A, ∅ ∈ P(A), A ∈ P(A).',
+    'P(∅) = {∅}, o sea el conjunto que tiene como unico elemento al conjunto vacio.',
+  ]}
+/>
+
+## Operaciones entre conjuntos
+
+Supondremos en todo lo que sigue que los conjuntos A, B, C, ... que se consideran son subconjuntos de un mismo conjunto referencial (o de referencia) U (para poder “operar”). Esto tambien es generalmente indispensable al definir un conjunto por comprension, como por ejemplo `P = {n ∈ ℕ : n es un numero par }`, o `I = {x ∈ ℝ : x ≤ 2} = [−∞, 2)`, que no es lo mismo que `J = {x ∈ ℕ : x ≤ 2} = {1, 2}`.
+
+### Complemento: Sea A subconjunto de un conjunto referencial U. El complemento de A (en U) es el conjunto A′ de los elementos de U que no pertenecen a A. Es decir
+
+`A′ = {b ∈ U : b /∈ A}, o tambien ∀ b ∈ U, b ∈ A′ ⇐⇒ b /∈ A.`
+
+Ejemplos:
+
+<List
+  items={[
+    'Si U = {1, 2, 3} y A = {2}, entonces A′ = {1, 3}.',
+    'Si U = ℕ y A = {2}, entonces A′ = {n ∈ ℕ, n ̸= 2}. O sea el complemento de un conjunto depende del conjunto referencial U.',
+    'Si U = ℕ y P = {n ∈ ℕ : n es un numero par }, entonces P′ = {n ∈ ℕ :n es un numero impar }.',
+    'Se tiene ∅′ = U y U′ = ∅.',
+    '(A′)′ = A.',
+  ]}
+/>
+
+Representacion de Venn del complemento:
+
+<img
+  src="https://i.imgur.com/fIyEuBj.png"
+  alt="Diagrama de venn del complemento"
+/>

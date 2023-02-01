@@ -1,0 +1,314 @@
+---
+title: Introduccion a la algoritmica y programacion.
+subtitle: Esquema funcional de una computadora. Pasos básicos para la solución de problemas. Definiciones de acción, proceso, algoritmo, programa, información, estado, léxico.
+---
+
+import Title from '../../components/Title';
+import Subtitle from '../../components/Subtitle';
+import List from '../../components/List';
+
+<Title title={frontmatter.title} />
+<Subtitle content={frontmatter.subtitle} />
+
+Todo usuario que se sienta por primera vez frente a un ordenador debe adquirir unos conceptos básicos que le permitan utilizarlo con eficacia. El ordenador siempre hará lo que le digamos pero no siempre lo que queremos, y ahí está el problema: ¿cómo decirle que haga lo que realmente queremos? Los ordenadores no son inteligentes, son simplemente máquinas capaces de hacer muchas cosas. Los usuarios si tenemos que ser inteligentes para que la máquina haga las cosas que realmente queremos.
+
+A pesar de que los ordenadores actuales no se parecen en casi nada a los ordenadores de primeras generaciones, su esquema de funcionamiento sigue siendo el mismo que hace 20 años: a través de distintos dispositivos de entrada introducimos los datos en la memoria del ordenador. Una vez en memoria el microprocesador realiza algún proceso y produce un resultado por los dispositivos de salida.
+
+Este esquema se repite invariablemente. Veamos algunos ejemplos: escribimos una carta con Word utilizando el teclado como dispositivo de entrada. Realizamos procesos con el texto. Finalmente imprimimos en una impresora como dispositivo de salida. Introducimos una lista desordenada de nombres de personas por el teclado, el microprocesador las ordena, obtenemos por pantalla o impresora la lista de nombres ordenados alfabéticamente.
+
+{/* TODO: Crear componente de imagen */}
+
+<img src="https://i.imgur.com/EgJTYvR.png" alt="intro-algo-01a" />
+
+Llamamos periféricos tanto a los dispositivos de entrada como los de salida. Ciertos periféricos son exclusivamente de entrada (teclado) o de salida (impresora). Otros periféricos (discos) pueden funcionar como dispositivos de entrada (los datos están guardados en el disco) y como dispositivos dispositivos de salida (guardamos los datos en el disco).
+
+Simplificando más el esquema tenemos dos bloques: perifércios y CPU (Unidad Central de Proceso). En la CPU encontramos la memoria pincipal y el microprocesador integrados en la placa base. Un ordenador puede definirse como un microprocesador conectado a una memoria principal. El microprocesador es el circuito más importante de la máquina, puesto que es el que interpreta, ejecuta y procesa los datos que se encuentren en la memoria principal. Esta última tendrá por finalidad almacenar los datos que son procesados por el microprocesador. El resto de dispositivos (teclado, discos, pantalla, ratón...) son periféricos.
+
+Si tenemos en cuenta lo anteriormente expuesto, el esquema funcional puede expresarse de forma mas detallada como arquitectura básica como se observa en el siguiente gráfico:
+
+<img src="https://i.imgur.com/wMOq1V6.png" alt="intro-algo-01a" />
+
+Los datos circulan por los circuitos de la placa base a traves de los llamados Buses. El Bus más importante es el del sistema, que comunica la memoria principal con el microprocesador, que a su vez se comunica con una memoria especial muy rápida de uso exclusivo del microprocesador llamada memoria Caché. Otros Buses son AGP, PCI, etc. Un circuito especializado controla el tráfico por los buses. Es el llamado ChipSet.
+
+# Pasos basicos para la resolucion de problemas
+
+La **'resolución de un problema'** mediante un ordenador consiste en el proceso que a partir de la descripción de un problema, expresado habitualmente en lenguaje natural y en términos propios del dominio del problema, permite desarrollar un programa que resuelva dicho problema.
+
+Este proceso exige los siguientes pasos:
+
+<List
+  items={[
+    'Definición del problema.',
+    'Análisis del problema.',
+    'Diseño o desarrollo de un algoritmo.',
+    'Transformación del algoritmo en un programa (codificación).',
+    'Ejecución y validación del programa.',
+  ]}
+/>
+
+Los dos primeros pasos son los más difíciles del proceso. Una vez analizado el problema y obtenido un algoritmo que lo resuelva, su transformación a un programa de ordenador es una tarea de mera traducción al lenguaje de programación deseado.
+
+## Definicion del problema
+
+Es una descripción breve y concisa, debe escribirse en dos a tres renglones. Debe ser lo suficientemente claro, preciso y completo. Cuando el sistema es demasiado extenso, puede acompañarse de objetivo general, objetivos particulares y el alcance al que se pretende llegar en cada versión del sistema.
+
+Sin embargo, en caso de tener un planteamiento concreto sobre futuras características que pueda llegar a desarrollar el producto, este puede ser un buen momento para especificar el alcance futuro. Escribirlo bajo este apartado le da la posibilidad al equipo de desarrollo, la posibilidad de contemplar requisitos adicionales para que la solución pueda extenderse con facilidad en posteriores revisiones.
+
+Generalmente, construir una primera versión de un sistema puede llegar a ser tardado, y en algunas ocasiones las restricciones de presupuesto o de tiempo son un factor muy importante para posponer la creación de un sistema más completo.
+
+El personal que se dedica a la programación de un sistema de cómputo no tiene que ser experta en todos los temas, el planteamiento del problema debe realizarse en el lenguaje que se utiliza en el contexto de los requerimientos, es decir: en el dominio del problema. Con la finalidad de establecer un puente de comunicación entre el cliente (quien solicita el sistema) y el equipo de desarrollo (quien realiza el sistema), comúnmente se agrega un glosario con términos relacionados con el problema: conceptos, roles, acciones, fórmulas, relaciones, etc.
+
+En el planteamiento del sistema, debe quedarle muy claro al cliente y al desarrollador qué se espera como productos finales, qué insumos deberán entregarse al desarrollador, cómo se mostrarán los resultados, quiénes intervendrán en la solución, los tiempos de entrega, los mecanismos de verificación de avance, los roles de las personas o sistemas que interactuarán, la forma como se recaba y reporta la información y cómo se desea que se entregue, los costos y en su caso las penalizaciones por incumplimiento de cada parte (en tiempo o en dinero).
+
+Aunque no se entrega en el documento de análisis, el encargado de solicitar los requerimientos debe ser capaz de visualizar la lógica del sistema, es decir, cuáles son las interrelaciones que se realizarán y qué es lo que se necesita mínimamente como entrada para llegar a la solución requerida.
+
+### Ejemplo
+
+#### Definicion
+
+Calcule el área de un triángulo a partir de conocer su base y altura.
+
+#### Objetivo general
+
+Diseñe una clase que modele distintos triángulos, conteniendo los atributos y métodos necesarios para almacenar asignar y recuperar la información de cada uno de ellos.
+
+#### Objetivos particulares
+
+Diseñe una especialización de la clase para modelar triángulos equiláteros a partir de la clase original (la base, y la altura guardan una relación de proporcionalidad).
+
+#### Requerimientos no funcionales
+
+El programa se desarrollará para un entorno que sólo una persona lo utilizará cada vez (monousuario).
+
+#### Glosario
+
+Un triángulo es una figura geométrica que se compone y delimita por las líneas que unen a tres puntos no colineales. Si una de esas líneas se coloca de forma horizontal, suele nombrarse como la “base del triángulo” (b)
+, a partir de ahí hasta el punto que no forma la base se traza una línea perpendicular, la distancia de la base a dicho punto se conoce como la altura del triángulo (h).
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/glosario-triangulo.png"
+  alt="triangulo"
+/>
+Así, el área (a) se calcula utilizando la siguiente fórmula:
+
+a←bh/2
+
+Dónde:
+
+• a es el área del triángulo.
+
+• b es la longitud de la base.
+
+• h es la longitud de la altura.
+
+#### Alcance actual y futuro
+
+Alcance actual: Se calculará únicamente el área si se conocen los valores del área y de la altura, no se manejarán unidades, no se dibujará en pantalla. Solo se solicitan los datos y se muestra el resultado.
+
+Alcance futuro: Se podrá incluir en un formulario, se podrá dibujar en la pantalla, por el momento no se calculará a partir de conocer tres puntos en el espacio o conocer la longitud de tres segmentos de recta.
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/alcance-actual-futuro.png"
+  alt="alcance"
+/>
+
+#### Documentacion y rubrica de evaluacion
+
+Todos los puntos anteriores y lo que se desarrolle en cada etapa de la solución deberá documentarse y verificarse por alguien más del equipo de desarrollo y ser validado con el cliente (quien solicita el programa o sistema de cómputo).
+
+## Analisis del problema
+
+Durante esta etapa, el equipo de desarrollo documentará la solución de manera teórica. Identificará quiénes intervienen en el sistema, qué acciones deberán realizar en él, cómo será la interfaz con la que interactuarán y deberá ser capaz de definir cuáles son los posibles errores que puede cometer el usuario al interactuar con el sistema con la intención de encontrar soluciones durante el análisis.
+
+A su vez, el desarrollador identificará que información es necesario obtener en el sistema y qué acciones se ejecutarán sobre esos datos (principio de abstracción). Se identificará el orden adecuado (a grandes rasgos) de las instrucciones que resolverán el sistema (algoritmos y diagramas de flujo). Se establecerán las partes del sistema (clases) y el flujo de información a través de dichas partes de acuerdo a los algoritmos planteados (en diagrama de secuencia).
+
+### Casos de uso
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/casos-uso.png"
+  alt="alcance"
+/>
+
+### Detalles de caso de uso
+
+1. El sistema crea un triángulo
+2. El sistema solicita el valor de la base
+3. El usuario proporciona el valor de la base
+4. El sistema asigna el valor proporcionado al triángulo
+5. El sistema solicita el valor de la altura
+6. El usuario proporciona el valor de la altura
+7. El sistema asigna el valor proporcionado al triángulo
+8. El sistema solicita al triángulo el valor de su área
+9. El sistema muestra al usuario el valor proporcionado por el triángulo
+
+### Diagrama de estados
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/diagrama-estados.png"
+  alt="alcance"
+/>
+
+### Excepciones
+
+• El valor de la longitud de la base debe ser distinto de cero.
+• El valor de la longitud de la altura debe ser distinto de cero.
+• El valor de la longitud de la base debe ser positivo.
+• El valor de la longitud de la altura debe ser positivo.
+• El área no puede ser cero o negativo.
+• Los números deben estar escritos correctamente.
+
+### Prototipo
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/prototipo.jpg"
+  alt="alcance"
+/>
+
+### Diagrama de flujo
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/diagrama-flujo.png"
+  alt="alcance"
+/>
+
+### Diagrama de secuencia
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/diagrama-secuancia.png"
+  alt="alcance"
+/>
+
+### Diagrama de clases basico
+
+{/* Hacer componente de diagrama de clases */}
+Triángulo
+
+base
+altura
+área
+
+calcularArea()
+
+## Diseño o desarrollo de un algoritmo.
+
+A partir de los requerimientos no funcionales que se obtuvieron en el planteamiento del problema y los productos que se obtienen del análisis, se plantea la arquitectura del sistema (qué elementos técnicos se necesitan para su implementación), se indican los mecanismos de lectura y escritura del estado del objeto (valor de cada atributo).
+
+También, como se puede apreciar, en esta etapa se definen las pruebas (unitarias) que se ejecutarán sobre cada Clase para revisar si los métodos trabajan adecuadamente y sobre el sistema en su conjunto (pruebas de integración) para revisar que el programa haga lo de que se esperaba en el planteamiento y alcance del problema original.
+
+### Arquitectura
+
+• Uso de Java BlueJ.
+• Uso de programa monousuario.
+• Interfaz de consola para la ejecución.
+• Vista separada de la lógica.
+
+### Diagrama de clase desarrollado
+
+```java
+Triángulo
+
+- float base
+- float altura
+- float area
+
++Triangulo()
+
++ Triangulo(float b, float h)
+- void calcularArea()
++ float getBase()
++ void setBase(float value)
++ float getAltura()
++ void setAltura(float value)
++ float getArea()
+```
+
+### Diseño de pruebas unitarias y de integracion
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/diseno-pruebas.png"
+  alt="alcance"
+/>
+
+## Transformación del algoritmo en un programa (codificación).
+
+El planteamiento, análisis y diseño de un problema y su solución constituyen la parte analítica, teórica o abstracta en el ciclo de desarrollo. Si éstas se concluyen de manera satisfactoria, la implementación debe reducirse a codificar los productos obtenidos en los diagramas y ejecutar las pruebas de la etapa de diseño para corroborar el buen funcionamiento del sistema.
+
+Como producto final, se deberá proporcionar el código, el manual de usuario, y en caso de requerirse, el plan de capacitación a los usuarios finales.
+
+### Codificación
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/codificacion.jpg"
+  alt="alcance"
+/>
+
+### Manual de usuario
+
+Descripción de los pasos que debe ejecutar el usuario para poder utilizar el programa. Puede ir desde unas cuantas líneas si el programa es corto pero podría incluir varios libros o documentos electrónicos si el sistema de cómputo es de grandes dimensiones e incluye a distintos usuarios trabajando de manera simultánea utilizando diferentes roles.
+
+## Ejecución y validación del programa.
+
+### Pruebas
+
+A partir el diseño de las pruebas unitarias y de integración, el equipo de programación (testers) revisará las variables de entrada y si es que se obtienen los valores que se esperan, incluyendo los casos que pueden generar pruebas para corroborar si el programa resolvió el problema.
+
+Las pruebas se documentan para conocer el proceso de revisión y corroborar que se realizaron adecuadamente. Éstas deben replicar el ambiente donde se ejecutará el sistema (en producción), no basta con que funcionen en el equipo de los desarrolladores (sistema en desarrollo).
+
+#### Evidencias
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/evidencia-ejecucion.jpg"
+  alt="alcance"
+/>
+
+### Mantenimiento
+
+En caso de que las pruebas no se ejecuten de manera adecuada, se procederá a realizar la revisión y corrección del código que pudiera estar mal codificado o analizado.
+
+Existen tres tipos de mantenimiento:
+
+• **Correctivo**: se realiza para corregir errores en el código.
+• **Operacional**: se establece qué acciones deben realizarse, así como su periodicidad para garantizar que el sistema trabaje adecuadamente y se realiza una política permanente de respaldos del sistema y de los datos.
+• **Aumentar características**: se evalúa el desempeño del sistema y se establece el siguiente ciclo de desarrollo para incrementar la funcionalidad del sistema.
+
+<img
+  src="https://portalacademico.cch.unam.mx/sites/default/files/correcion-errores.jpg"
+  alt="alcance"
+/>
+
+### Documentacion
+
+El proceso de documentación es permanente y debe realizarse la validación escrita por parte del equipo de desarrollo y del cliente. Se recomiendan revisiones entre pares, previas a la entrega final. En caso de requerirse cambios, estos deben documentarse, así como indicar quién tiene la responsabilidad de realizarlos; además de acordar el impacto económico y en tiempo de los mismos. El control de cambios también se documenta y firma para aceptarlo.
+
+# Definiciones
+
+{/* TODO: Crear componente de definiciones */}
+
+**Accion**: Una acción es una implementación adicional. Se puede crear en un lenguaje diferente al de la implementación básica. A cada acción se le da un nombre. Las acciones trabajan con los datos del bloque de funciones o programa al cual pertenecen.
+
+Proceso: Un proceso es la ejecución de un programa, es decir, los datos e instrucciones están cargados en la memoria principal, ejecutándose o esperando a hacerlo. Un proceso no tiene porqué estar siempre en ejecución.
+
+algoritmo: cualquier procedimiento computacional bien definido que parte de un estado inicial y un valor o un conjunto de valores de entrada, a los cuales se les aplica una secuencia de pasos computacionales finitos, produciendo una salida o solución.
+
+programa: conjunto de código escrito que al ejecutarse se encarga de decirle a la computadora las tareas que debe llevar a cabo.
+información: conjunto de datos organizados y procesados que funcionan como mensajes, instrucciones y operaciones o cualquier otro tipo de actividad que tenga lugar en una computadora.
+
+estado: es una configuración única de información en un programa o máquina.
+
+lexico: Vocabulario o conjunto de palabras y símbolos válidos de un idioma o lenguaje.
+
+• Comentarios
+• Espacios en blanco
+• Palabras reservadas
+• Identificadores
+• Delimitadores
+• Separadores
+• Operadores
+
+Sintaxis: Parte de la gramática que enseña a coordinar y unir las palabras o símbolos para formar oraciones y expresar conceptos. Conjunto de reglas que definen las secuencias correctas de los elementos léxicos de un lenguaje de programación.
+
+Estructura del texto (de las secuencias de símbolos que lo componen)
+
+Semantica: Perteneciente o relativo al significado de las palabras y oraciones.
+
+Significado del texto y de las frases (secuencias de símbolos) que lo componen.

@@ -412,3 +412,82 @@ function calculateResellPrice(originalPrice, age) {
   }
 }
 ```
+
+# 1, 0 y comodines
+
+Dado un string que contiene ceros y unos, y un "?", donde este "?" es un comodin por lo cual puede ser 0 o 1.
+
+Devolver un array conteniendo todas las posibilidades que puede tener el subtituto de "?".
+
+You are given a string containing 0's, 1's and one or more '?', where ? is a wildcard that can be 0 or 1.
+
+Return an array containing all the possibilities you can reach substituing the ? for a value.
+
+## Ejemplos
+
+```js
+'101?' -> ['1010', '1011']
+
+'1?1?' -> ['1010', '1110', '1011', '1111']
+```
+
+## Notes
+
+- No te preocupes por ordenar el array.
+- El string nunca estara vacio.
+- Diviertete!
+
+## Mi solucion
+
+```js
+function possibilities(str) {
+  let arr = [];
+
+  const stack = [];
+
+  stack.push(str);
+
+  let index;
+
+  while (stack.length) {
+    let curr = stack.pop();
+    if ((index = curr.indexOf('?')) !== -1) {
+      for (let c = 0; c <= 1; c++) {
+        curr = curr.substring(0, index) + c + curr.substring(index + 1);
+        stack.push(curr);
+      }
+    } else {
+      arr.push(curr);
+    }
+  }
+  return arr;
+}
+```
+
+{/* Ta bueno para una explicacion */}
+
+# Convertir un string a Camel Case
+
+Complete el método/función para que convierta las palabras delimitadas por guiones/guiones bajos en mayúsculas y minúsculas. La primera palabra de la salida debe ir en mayúsculas sólo si la palabra original iba en mayúsculas (lo que se conoce como Mayúsculas Camel Case, también conocido como Pascal case). Las palabras siguientes deben ir siempre en mayúsculas.
+
+## Ejemplos
+
+```
+"the-stealth-warrior" gets converted to "theStealthWarrior"
+"The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+```
+
+## Mi solucion
+
+```js
+function toCamelCase(str) {
+  let stack = [];
+  let transformed = str.replaceAll('_', '-');
+  let splitted = transformed.split('-');
+  stack.push(splitted[0]);
+  for (let i = 1; i < splitted.length; i++) {
+    stack.push(splitted[i][0].toUpperCase() + splitted[i].substring(1));
+  }
+  return stack.join('');
+}
+```
