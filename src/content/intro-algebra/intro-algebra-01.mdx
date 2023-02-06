@@ -6,6 +6,7 @@ subtitle: Conjuntos. Subconjuntos. Diagramas de Venn. Operaciones entre conjunto
 import Title from '../../components/Title';
 import Subtitle from '../../components/Subtitle';
 import List from '../../components/List';
+import Tabla from '../../components/Tabla';
 
 <Title title={frontmatter.title} />
 <Subtitle content={frontmatter.subtitle} />
@@ -70,7 +71,7 @@ Ejemplos:
 <List
   items={[
     'Sea A = {1, 2, 3}: {1} ⊆ A, {2, 3} ⊆ A, ∅ ⊆ A, A ⊆ A, {3, 4} ̸⊆ A.',
-    'ℕ ⊆ ℕ ⊆ ℚ ⊆ ℝ ⊆ ℂ.',
+    'ℕ ⊆ ℤ ⊆ ℚ ⊆ ℝ ⊆ ℂ.',
     'A ⊆ A y ∅ ⊆ A cualquiera sea el conjunto A.',
   ]}
 />
@@ -91,8 +92,8 @@ Ejemplos de conjuntos dados por comprension:
 
 <List
   items={[
-    'A = {x ∈ R : x ≥ −2}, B = {k ∈ Z : k ≥ −2}.',
-    'P = {n ∈ N : n es par}, I = {k ∈ Z : k es impar}.',
+    'A = {x ∈ ℝ : x ≥ −2}, B = {k ∈ ℤ : k ≥ −2}.',
+    'P = {n ∈ ℕ : n es par}, I = {k ∈ ℤ : k es impar}.',
   ]}
 />
 
@@ -108,7 +109,7 @@ A = B ⇐⇒ A ⊆ B y B ⊆ A.
 
 Es decir A = B si tienen exactamente los mismos elementos (sin importar el orden y sin tener en cuenta repeticiones de elementos). (Aqui, el simbolo “⇔” es el simbolo de la bi-implicacion, que se lee “si y s´olo si”.)
 
-Observaci´on 1.1.6. (Combinatoria, o el arte de contar.)
+Observacion 1.1.6. (Combinatoria, o el arte de contar.)
 
 Sea A es un conjunto finito y sea B ⊆ A. Entonces #B ≤ #A. (Esto vale tambien para conjuntos infinitos)
 
@@ -132,7 +133,9 @@ Ejemplos:
 
 Supondremos en todo lo que sigue que los conjuntos A, B, C, ... que se consideran son subconjuntos de un mismo conjunto referencial (o de referencia) U (para poder “operar”). Esto tambien es generalmente indispensable al definir un conjunto por comprension, como por ejemplo `P = {n ∈ ℕ : n es un numero par }`, o `I = {x ∈ ℝ : x ≤ 2} = [−∞, 2)`, que no es lo mismo que `J = {x ∈ ℕ : x ≤ 2} = {1, 2}`.
 
-### Complemento: Sea A subconjunto de un conjunto referencial U. El complemento de A (en U) es el conjunto A′ de los elementos de U que no pertenecen a A. Es decir
+### Complemento
+
+Sea A subconjunto de un conjunto referencial U. El complemento de A (en U) es el conjunto A′ de los elementos de U que no pertenecen a A. Es decir
 
 `A′ = {b ∈ U : b /∈ A}, o tambien ∀ b ∈ U, b ∈ A′ ⇐⇒ b /∈ A.`
 
@@ -154,3 +157,236 @@ Representacion de Venn del complemento:
   src="https://i.imgur.com/fIyEuBj.png"
   alt="Diagrama de venn del complemento"
 />
+
+Tabla de verdad:
+
+<Tabla
+  items={{
+    headers: ['A', "A'"],
+    body: [
+      ['V', 'F'],
+      ['F', 'V'],
+    ],
+  }}
+/>
+
+### Union:
+
+Sean A, B subconjuntos de un conjunto referencial U. La union de A y B es el conjunto A ∪ B de los elementos de U que pertenecen a A o a B. Es decir
+
+`A ∪ B = {c ∈ U : c ∈ A y c ∈ B}, o tambien ∀ c ∈ U, c ∈ A ∪ B ⇐⇒ c ∈ A o c ∈ B.`
+
+Notemos que este “o” involucrado en la definicion de la union es no excluyente, es decir si un elemento est´a en A y en B, esta en la union por estar en al menos alguno de los dos.
+
+Ejemplos:
+
+<List
+  items={[
+    'Si A = {1, 2, 3, 5, 8} y B = {3, 4, 5, 10} ⊆ U = {1, . . . , 10}, entonces A ∪ B = {1, 2, 3, 4, 5, 8, 10}.',
+    'Si I = {x ∈ ℝ : x ≤ 2} = (−∞, 2] y J = {x ∈ ℝ : −10 ≤ x < 10} = [−10, 10) ⊆ U = ℝ, entonces I ∪ J = {x ∈ ℝ : x < 10} = (−∞, 10).',
+    `Cualesquiera sean A y B, se tiene A ∪ B = B ∪ A (conmutatividad), A ∪ ∅ = A, A ∪ U = U, A ∪ A′ = U.
+Probemos por ejemplo la afirmacion A ∪ A′ = U: Hay que probar las dos inclusiones A ∪ A′ ⊆ U y U ⊆ A ∪ A′.
+
+A ∪ A′ ⊆ U: Sea a ∈ A ∪ A′ ; si a ∈ A entonces a ∈ U pues A ⊆ U, y si a ∈ A′, entonces a ∈ U pues A′ ⊆ U; por lo tanto A ∪ A′ ⊆ U.
+
+U ⊆ A ∪ A′: Sea a ∈ U; entonces a ∈ A o a /∈ A. Si a ∈ A, entonces a ∈ A ∪ A′, y si a /∈ A, por definici´on a ∈ A′ y luego a ∈ A ∪ A′; por lo tanto U ⊂ A ∪ A′.`
+]}
+/>
+
+Representacion de Venn de la union:
+
+<img src="https://i.imgur.com/4k3BPeY.png" alt="Diagrama de venn de la union" />
+
+Además en la unión de conjuntos se cumple las siguientes propiedades:
+
+<List
+  items={[
+    'Conmutativa: por lo tanto A ∪ B = B ∪ A',
+    'Asociativa: es decir que dados tres o mas conjuntos tendremos (A ∪ B) ∪ C = A ∪ (B ∪ C)',
+  ]}
+/>
+
+Tabla de verdad:
+
+<Tabla
+  items={{
+    headers: ['A', "A'", 'A ∪ B'],
+    body: [
+      ['V', 'V', 'V'],
+      ['F', 'V', 'V'],
+      ['V', 'F', 'V'],
+      ['F', 'F', 'F'],
+    ],
+  }}
+/>
+
+### Interseccion.
+
+Sean A, B subconjuntos de un conjunto referencial U. La interseccion de A y B es el conjunto A ∩ B de los elementos de U que pertenecen tanto a A como a B. Es decir
+`A ∩ B = {c ∈ U : c ∈ A y c ∈ B}, o tambien c ∈ A ∩ B ⇐⇒ c ∈ A y c ∈ B.`
+
+Ejemplos:
+
+<List
+  items={[
+    'Sean A = {1, 2, 3, 5, 8}, B = {3, 4, 5, 10} ⊆ U = {1, . . . , 10}. Entonces A ∩ B = {3, 5}.',
+    'Sean I = {x ∈ R : x ≤ 2} = (−∞, 2], J = {x ∈ R : −10 ≤ x < 10} = [−10, 10) ⊆ U = R. Entonces I ∩ J = {x ∈ R : −10 ≤ x ≤ 2} = [−10, 2].',
+    `Cualesquiera sean A y B, se tiene A ∩ B = B ∩ A (conmutatividad), A ∩ ∅ = ∅, A ∩ U = A, A ∩ A′ = ∅.`,
+  ]}
+/>
+
+Cuando A ∩ B = ∅, se dice que A y B son conjuntos disjuntos.
+
+Representacion de Venn de la interseccion:
+
+<img
+  src="https://i.imgur.com/fQSywek.png"
+  alt="Diagrama de venn de la interseccion"
+/>
+
+En la intersección de conjuntos se cumple las siguientes propiedades:
+
+<List
+  items={[
+    'Asociativa: es decir que, R ∩ S ∩ T = (R ∩ S) ∩ T = =R ∩ (S ∩ T)',
+    'Conmutativa: de modo tal que, R ∩ S ∩ T = R ∩ T ∩ S = T ∩ R ∩ S',
+    `Distributiva: La unión es distributiva con respecto a la intersección, (R ∩ S) ∪ T = (R ∪ T) ∩ (S ∪ T). La intersección de conjuntos es distributiva con respecto a la unión, (R ∪ S) ∩ T = (R ∩ T) ∪ (S ∩ T)`,
+  ]}
+/>
+
+Tabla de verdad:
+
+<Tabla
+  items={{
+    headers: ['A', "A'", 'A ∩ B'],
+    body: [
+      ['V', 'V', 'V'],
+      ['F', 'V', 'F'],
+      ['V', 'F', 'F'],
+      ['F', 'F', 'F'],
+    ],
+  }}
+/>
+
+Podemos notar que a diferencia del complemento, la union y la interseccion no dependen del conjunto referencial U.
+Otra forma de visualizar esas operaciones es por medio de las tablas de verdad de la logica propisicional aplicadas a las operaciones de conjuntos: Dado un conjunto A ⊆ U, un elemento a ∈ U puede pertenecer a A o no, notaremos en la tabla siguiente el hecho que a ∈ A con una V (de Verdadero) o con un 1, y el hecho que a /∈ A con una F (de Falso) o con un 0 (abajo de la letra A). Esto describe las dos posibilidades para todos los elementos de U. Ahora bien, si tenemos dos conjuntos A, B ⊆ U, hay 4 posibilidades: estar en A y en B, no en A pero s´ı en B, en A pero no en B, y finalmente ni en A ni en B.
+
+### Diferencia de conjuntos
+
+Operación en la cual dos conjuntos, A y B, especifican cuales elementos de uno no están en el otro, formando un nuevo conjunto llamado diferencia. La diferencia del conjunto A y el conjunto B, se representa como: A-B. La diferencia del conjunto B y el conjunto A, se representa como: B-A. Ambas operaciones arrojan resultados distintos, cuando los conjuntos no son iguales.
+En la diferencia de conjuntos se cumple las siguientes propiedades: la diferencia de conjuntos no es asociativa, y no es conmutativa.
+La diferencia es distributiva con respecto a la unión: (R ∪ S) – T = (R – T) ∪ (S – T); y a la intersección de conjuntos: (R ∩ S) – T = (R – T) ∩ (S – T).
+
+Representacion de Venn de la Diferencia de conjuntos:
+
+<img
+  src="https://i.imgur.com/jU2Iobf.png"
+  alt="Diagrama de venn de la Diferencia de conjuntos"
+/>
+
+### Diferencia simétrica de conjuntos.
+
+Dados dos conjuntos A y B, su diferencia simétrica, A Δ B, es un conjunto que contiene los elementos de A y los de B, menos los que son comunes a ambos.
+En la diferencia simétrica de conjuntos se cumple las siguientes propiedades:
+
+<List
+  items={[
+    'Asociativa: (A Δ B) Δ C = A Δ (B Δ C)',
+    'Conmutativa: A Δ B = B Δ A',
+    `Distributiva respecto a la intersección: A ∩ (B Δ C) = (A ∩ B) Δ (A ∩ C)`,
+  ]}
+/>
+
+Representacion de Venn de la Diferencia simétrica de conjuntos:
+
+<img
+  src="https://i.imgur.com/auhypmR.png"
+  alt="Diagrama de venn de la Diferencia simétrica de conjuntos"
+/>
+
+Tabla de verdad:
+
+<Tabla
+  items={{
+    headers: ['A', "A'", 'A ∩ B'],
+    body: [
+      ['V', 'V', 'V'],
+      ['F', 'V', 'F'],
+      ['V', 'F', 'F'],
+      ['F', 'F', 'F'],
+    ],
+  }}
+/>
+
+# Producto cartesiano
+
+El nombre producto cartesiano fue puesto en honor al matematico, fisico y filosofo frances Rene Descartes, 1596-1650. El plano euclideo `ℝ² = {(x, y); x, y ∈ ℝ}` representado mediante los ejes cartesianos es el plano donde constantemente dibujamos los graficos de las funciones.
+
+<img
+  src="https://i.imgur.com/BH4PsFN.png"
+  alt="Eje de coordenadas cartesianas"
+/>
+
+Sean A, B conjuntos. El producto cartesiano de A con B, que se nota `A x B`, es el conjunto de pares ordenados
+`A x B := {(a, b) : a ∈ A, b ∈ B}`.
+
+Ejemplos:
+
+<List
+  items={[
+    'Sean A = {1, 2, 3}, B = {a, b}. Entonces A x B = {(1, a),(1, b),(2, a),(2, b),(3, a),(3, b)}, B x A = {(a, 1),(a, 2),(a, 3),(b, 1),(b, 2),(b, 3)} y B x B = {(a, a),(a, b),(b, a),(b, b)}.',
+    'Si A = B = R, entonces R x R es el espacio euclideo R².',
+    'Si A ̸= B, entonces A x B ̸= B x A.',
+    'A x ∅ = ∅, ∅ x B = ∅',
+    'Sean A ⊆ U, B ⊆ V entonces A x B ⊆ U x V . Analizar si vale (A x B)′ = A′ x B′.',
+  ]}
+/>
+
+De la misma forma se puede definir el producto cartesiano de n conjuntos A1, ... , An como el conjunto de n-uplas ordenadas:
+
+`A₁ x ... x Aₙ := {(a₁, ... , aₙ) : a₁ ∈ A₁, ... , aₙ ∈ Aₙ}.`
+
+# Particiones
+
+El siguiente concepto nos permite hablar de «partir» un conjunto en distintos subconjuntos. En términos simples, una partición será una forma de dividir un conjunto en subconjuntos que no comparten elementos en común entre sí. Por ejemplo, considera a los números enteros. Podemos dividir el conjunto en dos particiones: el de los número pares y el de los impares. Denotemos al conjunto de los números pares como 𝑷 y al de los impares como 𝑰 entonces:
+
+𝑷 ⋂ 𝑰 = ∅
+𝑷 ⋃ 𝑰 = ℤ
+
+Entonces podemos observar algunos puntos para definir qué es una partición:
+
+<List
+  items={[
+    'Cada uno de los subconjuntos que forman la partición son no vacíos. Nota que tanto 𝑷 como 𝑰 tienen al menos un elemento.',
+    'La intersección entre cada una de los subconjuntos de la partición es vacía. Esto significa que las particiones no comparten elementos, en el ejemplo, es claro que ningún número par es impar y viceversa.',
+    'La unión de los subconjuntos de la partición forman de nuevo el conjunto. Esto significa que todo elemento del conjunto pertenece a una única partición, en nuestro ejemplo esto significa que cualquier número entero es impar o es par, no ambos al mismo tiempo.',
+  ]}
+/>
+
+Estas son las tres propiedades que pediremos para definir una **partición**.
+
+Definición. Sea X un conjunto y `F = {Xᵢ}ᵢ∈𝖿` una colección de subconjuntos, entonces diremos que F es una partición de X si:
+
+<List
+  items={[
+    'Para cada Xᵢ ∈ 𝖿, Xᵢ ≠ ∅.',
+    'Para Xᵢ, Xⱼ ∈ 𝖿 dos subconjuntos distintos, Xᵢ ⋂ Xⱼ = ∅.',
+    '⋃F = X.',
+  ]}
+/>
+
+Resulta que esta definición no es al azar, pues cada relación de equivalencia induce una partición.
+
+Proposición. Sea ∼ una relación de equivalencia sobre un conjunto X. Entonces las distintas clases de equivalencia forman una partición.
+
+Demostración. Denotemos a 𝑷 como el conjunto de todas las clases de equivalencia de X, es decir
+
+`𝑷 = {[x]: x ∈ X}`
+
+Ahora demostraremos que 𝑷 es una partición. Para ello, notemos que:
+
+1. Cada elemento de la partición 𝑷 es distinta al vacío. Observemos que si `[x] ∈ 𝑷` entonces existe al menos un elemento en esa clase de equivalencia, de manera explícita, `x ∈ [x]`.
+2. Si `[x]`, `[y]` son dos clases distintas, entonces `[x] ⋂ [y]` es vacía. Este punto sale directamente del corolario demostrado anteriormente, pues `[x] = [y]` o `[x] ⋂ [y] ≠ ∅`.
+3. `⋃𝑷 = X`. De manera clara sucede que `⋃𝑷 ⊂ X`, pues cada elemento de 𝑷 es un subconjunto de X, y la unión de subconjuntos de un conjunto siempre está contenida en el conjunto. Para demostrar que `X ⊂ ⋃𝑷`, notemos que si `x ∈ X`, entonces `x ∈ [x]` y `[x] ∈ 𝑷`, de esta manera, `x ∈ ⋃𝑷`.
+
+De esta manera, 𝑷 es una partición.
